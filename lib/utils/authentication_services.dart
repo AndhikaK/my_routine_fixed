@@ -6,8 +6,10 @@ class AuthenticationServices {
 
   AuthenticationServices(this._firebaseAuth);
 
+  //
   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
 
+  // login with google
   Future<UserCredential> signInWithGoogle() async {
     final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
 
@@ -18,6 +20,12 @@ class AuthenticationServices {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+
     return await _firebaseAuth.signInWithCredential(credential);
+  }
+
+  // firebase sign out
+  Future<void> signOut() async {
+    await _firebaseAuth.signOut();
   }
 }
