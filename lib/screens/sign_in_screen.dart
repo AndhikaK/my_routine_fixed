@@ -7,8 +7,29 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorConst.darkBackground,
-      body: Center(
-        child: GoogleSignInButton(),
+      body: SafeArea(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Spacer(),
+              Icon(
+                Icons.celebration,
+                color: ColorConst.maxYellowRed,
+                size: 100,
+              ),
+              Text(
+                "Routine",
+                style: TextStyle(color: ColorConst.maxYellowRed, fontSize: 40),
+              ),
+              Spacer(),
+              GoogleSignInButton(),
+              Spacer(),
+            ],
+          ),
+        ),
       ),
     );
   }
